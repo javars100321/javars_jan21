@@ -32,6 +32,7 @@ public class TutorialController {
 	@GetMapping("/tutorials")
 	public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required=false, name="title1") String title) {
 		try {
+			System.out.println("just for git");
 			List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
 			if (title == null)
