@@ -61,8 +61,6 @@ public class User implements Serializable {
 
 	}
 
-	
-
 	@OneToMany(targetEntity = Expense.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 
 	@JoinColumn(name = "user_id", referencedColumnName = "userId")
