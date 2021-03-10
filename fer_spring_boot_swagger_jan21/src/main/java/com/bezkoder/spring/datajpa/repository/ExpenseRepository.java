@@ -8,7 +8,6 @@ import com.bezkoder.spring.datajpa.model.Expense;
 @Repository
 public interface ExpenseRepository extends  JpaRepository<Expense, Integer>{
 
-	Expense save(int expenseId);
 	
 
 	
