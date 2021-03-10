@@ -1,34 +1,37 @@
 package com.bezkoder.spring.datajpa.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bezkoder.spring.datajpa.model.User;
-import com.bezkoder.spring.datajpa.repository.UserRepository;
+import com.bezkoder.spring.datajpa.repository.ExpenseRepository;
 
-//@CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/fer")
+@RequestMapping("/api")
 public class FERController {
 
+	
+
+	
 	@Autowired
-	UserRepository userRepository;
+	ExpenseRepository expenseRepository;
 
-	@PostMapping("/user/login")
-	public ResponseEntity<String> login(@RequestBody User user) {
-		
-		System.out.println("Login:");
-		
-		List<User> _user = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-		
-		return new ResponseEntity<String>((_user!=null && !_user.isEmpty() ? "Login Successfull" : "Invalid User Login Faild"), HttpStatus.CREATED);
+	
+	@DeleteMapping("/expense/{expenseId}")
+	public ResponseEntity<HttpStatus> deleteExpense(@PathVariable("expenseId") int expenseId) {
+
+		try {
+			expenseRepository.deleteById(expenseId);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
 	}
-
 }
+	
+	
