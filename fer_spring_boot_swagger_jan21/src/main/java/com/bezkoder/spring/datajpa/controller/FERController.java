@@ -24,6 +24,8 @@ public class FERController {
 	@PostMapping("/user/login")
 	public ResponseEntity<String> login(@RequestBody User user) {
 		
+		System.out.println("Login:");
+		
 		List<User> _user = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 		
 		return new ResponseEntity<String>((_user!=null && !_user.isEmpty() ? "Login Successfull" : "Invalid User Login Faild"), HttpStatus.CREATED);
