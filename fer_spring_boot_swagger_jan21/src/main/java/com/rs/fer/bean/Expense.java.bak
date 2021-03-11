@@ -14,7 +14,7 @@ public class Expense {
 	@Id
 	@Column(name="expense_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer expenseId;
+	private Integer expenseid;
 
 	@Column
 	private String type;
@@ -44,9 +44,8 @@ public class Expense {
 
 	}
 
-	public Expense(int expenseid,String type, String date, float price, int numberOfItems, float total, String bywhom) {
-		
-		this.expenseId=expenseid;
+	public Expense(String type, String date, float price, int numberOfItems, float total, String bywhom) {
+
 		this.type = type;
 		this.date = date;
 		this.price = price;
@@ -56,12 +55,12 @@ public class Expense {
 
 	}
 
-	public int getExpenseId() {
-		return expenseId;
+	public int getExpenseid() {
+		return expenseid;
 	}
 
-	public void setExpenseId(int expenseid) {
-		this.expenseId = expenseid;
+	public void setExpenseid(int expenseid) {
+		this.expenseid = expenseid;
 	}
 
 	public String getType() {
