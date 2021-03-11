@@ -89,7 +89,7 @@ public class FERController {
 
 		if ("currentPassword" != null) {
 			_user.setPassword(newpassword);
-			return new ResponseEntity<>((_user.getPassword() == newpassword ? "Valid User" : "Invalid User"),
+			return new ResponseEntity<>((_user.getPassword() == newpassword ? "changed resetpassword" : "Invalid User"),
 					HttpStatus.CREATED);
 
 		} else {
