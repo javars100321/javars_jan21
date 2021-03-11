@@ -10,9 +10,12 @@ public interface UserValidation {
 	Set<String> validateRegistrationRequest(RegistrationRequest request);
 
 
-	Set<String> validateResetPasswordRequest(RegistrationRequest request);
 
 
 	Set<String> validateResetPasswordRequest(ResetPasswordRequest request);
+
+//uservalidation
+
+
 
 }

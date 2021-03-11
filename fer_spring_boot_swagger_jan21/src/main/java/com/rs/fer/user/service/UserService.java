@@ -9,9 +9,13 @@ public interface UserService {
 	
 	RegistrationResponse registration(RegistrationRequest request);
 
-	//ResetPasswordResponse resetPassword(ResetPasswordRequest request);
+	//ResetPasswordResponse resetPassword(ResetPasswordRequest requestd);
 
 	ResetPasswordResponse resetPassword(ResetPasswordRequest requestd);
+	
+
+	
+	
 
 	
 	

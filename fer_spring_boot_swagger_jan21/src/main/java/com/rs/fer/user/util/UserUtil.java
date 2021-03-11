@@ -5,8 +5,11 @@ import com.rs.fer.user.request.RegistrationRequest;
 import com.rs.fer.user.request.ResetPasswordRequest;
 
 public interface UserUtil {
+	//load resetpassword
 	
 	User loadRegistrationRequestToUser(RegistrationRequest request);
+	
+	
 	
 	User loadResetPasswordRequestToUser(ResetPasswordRequest request);
 }

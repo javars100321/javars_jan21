@@ -15,6 +15,7 @@ public class UserUtilImpl implements UserUtil{
 	public User loadRegistrationRequestToUser(RegistrationRequest request) {
 
 		User user = new User();
+		//user
 		
 		user.setFirstname(request.getFirstname());
 		user.setMiddlename(request.getMiddlename());
@@ -32,12 +33,7 @@ public class UserUtilImpl implements UserUtil{
 	@Override
 	public User loadResetPasswordRequestToUser(ResetPasswordRequest request) {
 		
-      // User user = new User();
-		
-		//user.setUserId(request.getUserId());
-		//user.setPassword(request.getPassword());
-		
-		//return user;
+      
 		
 		return null;
 	}

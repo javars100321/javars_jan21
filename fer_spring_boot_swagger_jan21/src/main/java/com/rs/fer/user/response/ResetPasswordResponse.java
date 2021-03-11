@@ -2,6 +2,7 @@ package com.rs.fer.user.response;
 
 import java.util.Set;
 
+
 import org.springframework.http.HttpStatus;
 
 import com.rs.fer.bean.User;
@@ -9,6 +10,7 @@ import com.rs.fer.response.AbstractResponse;
 
 public class ResetPasswordResponse extends AbstractResponse {
 	private User user;
+	
 
 	public ResetPasswordResponse(HttpStatus status, String statusCode, String message, Set<String> errorMessages) {
 		super(status, statusCode, message, errorMessages);
@@ -19,7 +21,7 @@ public class ResetPasswordResponse extends AbstractResponse {
 	}
 
 	
-
+//resetpassword
 	public User getUser() {
 		return user;
 	}

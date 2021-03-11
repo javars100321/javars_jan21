@@ -15,5 +15,6 @@ public class AbstractResponse {
 		this.statusCode = statusCode;
 		this.message = message;
 		this.errorMessages = errorMessages;
+		//this.
 	}
 }

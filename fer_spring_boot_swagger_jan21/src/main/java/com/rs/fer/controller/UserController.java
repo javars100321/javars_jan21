@@ -34,9 +34,8 @@ public class UserController {
 		RegistrationResponse response = null;
 		
 		Set<String> errorMessages = userValidation.validateRegistrationRequest(request);
-		
+		//return response with error messages
 		if(!CollectionUtils.isEmpty(errorMessages)) {
-			//return response with error messages
 			response = new RegistrationResponse(HttpStatus.PRECONDITION_FAILED, 
 					"999", null, errorMessages);
 			
@@ -56,7 +55,7 @@ public class UserController {
 		Set<String> errorMessages = userValidation.validateResetPasswordRequest(request);
 		
 		if(!CollectionUtils.isEmpty(errorMessages)) {
-			//return response with error messages
+			
 			response = new ResetPasswordResponse(HttpStatus.PRECONDITION_FAILED, 
 					"999", null, errorMessages);
 			
@@ -65,6 +64,7 @@ public class UserController {
 		}
 		
 		return response;
+		//return null;
 		
 	}
 

@@ -31,17 +31,10 @@ public class UserValidationImpl implements UserValidation{
 	@Override
 	public Set<String> validateResetPasswordRequest(ResetPasswordRequest request) {
 		
-	  
+	  //errormessages
 		return null;
 	}
 
-	@Override
-	public Set<String> validateResetPasswordRequest(RegistrationRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 
 	
 	

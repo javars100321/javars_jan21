@@ -10,10 +10,11 @@ import com.rs.fer.expense.request.EditExpenseRequest;
 import com.rs.fer.expense.validation.ExpenseValidation;
 import com.rs.fer.util.FERUtil;
 
-@Component
-public class ExpenseValidationImpl implements ExpenseValidation {
+/*
+ * @Component public class ExpenseValidationImpl implements ExpenseValidation {
+ */
 
-	@Override
+	/*@Override
 	public Set<String> validateEditExpenseRequest(EditExpenseRequest request) {
 		Set<String> errorMessages = new LinkedHashSet<String>();
 
@@ -38,3 +39,4 @@ public class ExpenseValidationImpl implements ExpenseValidation {
 	}
 
 }
+*/
