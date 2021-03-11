@@ -3,6 +3,7 @@ package com.rs.fer.expense.util.impl;
 import org.springframework.stereotype.Component;
 
 import com.rs.fer.bean.Expense;
+import com.rs.fer.expense.request.DeleteExpenseRequest;
 import com.rs.fer.expense.request.EditExpenseRequest;
 import com.rs.fer.expense.util.ExpenseUtil;
 import com.rs.fer.util.DateUtil;
@@ -24,6 +25,15 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 		expense.setBywhom(request.getBywhom());
 
 		expense.setCreated(DateUtil.getCurrentDate());
+
+		return expense;
+	}
+
+	@Override
+	public Expense loadDeleteExpenseRequestToExpense(DeleteExpenseRequest request) {
+
+		Expense expense = new Expense();
+		expense.setExpenseId(request.getExpenseid());
 
 		return expense;
 	}
