@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 public class SpringBootDataJpaApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Java");
 		SpringApplication.run(SpringBootDataJpaApplication.class, args);
 	}
 
