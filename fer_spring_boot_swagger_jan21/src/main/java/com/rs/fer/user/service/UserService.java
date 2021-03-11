@@ -8,4 +8,5 @@ public interface UserService {
 	
 	RegistrationResponse registration(RegistrationRequest request);
 	GetUserResponse getUser(int userid);
+	
 }

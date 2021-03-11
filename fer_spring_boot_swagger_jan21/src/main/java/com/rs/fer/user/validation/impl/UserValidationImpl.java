@@ -35,6 +35,7 @@ public class UserValidationImpl implements UserValidation {
 
 		return errorMessages;
 	}
+
 	@Override
 	public Set<String> validateGetUserRequest(int userId) {
 		Set<String> errorMessages = new HashSet<String>();
@@ -43,7 +44,5 @@ public class UserValidationImpl implements UserValidation {
 
 		return errorMessages;
 	}
-
-	
 
 }

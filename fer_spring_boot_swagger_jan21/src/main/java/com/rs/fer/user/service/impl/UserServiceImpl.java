@@ -17,61 +17,49 @@ import com.rs.fer.user.service.UserService;
 import com.rs.fer.user.util.UserUtil;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
 	@Autowired
 	UserUtil userUtil;
-
+	
 	@Autowired
 	UserRepository userRepository;
-
+	
 	@Override
 	public RegistrationResponse registration(RegistrationRequest request) {
 		RegistrationResponse response = null;
-
-		// User is present or not check
+		
+		//User is present or not check
 		List<User> users = userRepository.findByEmail(request.getEmail());
-
-		if (!CollectionUtils.isEmpty(users)) {
-			// User already present
-			response = new RegistrationResponse(HttpStatus.PRECONDITION_FAILED, "001",
-					"User is already registered with the given email address", null);
+		
+		if(!CollectionUtils.isEmpty(users)) {
+			//User already present
+			response = new RegistrationResponse(HttpStatus.PRECONDITION_FAILED, 
+					"001", "User is already registered with the given email address", null);
 			return response;
 		}
-
-		// load vo to bean
+		
+		//load vo to bean
 		User user = userUtil.loadRegistrationRequestToUser(request);
-
-		// save bean to database
+		
+		//save bean to database
 		user = userRepository.save(user);
-
-		// load response
-		if (user.getUserId() > 0) {
-			// success
-			response = new RegistrationResponse(HttpStatus.OK, "000", "User is succesfully registered", null);
+		
+		//load response
+		if(user.getUserId() > 0) {
+			//success
+			response = new RegistrationResponse(HttpStatus.OK, 
+					"000", "User is succesfully registered", null);
 			response.setUser(user);
 		} else {
-			// failure
-			response = new RegistrationResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "User registration is failed",
-					null);
+			//failure
+			response = new RegistrationResponse(HttpStatus.INTERNAL_SERVER_ERROR, 
+					"002", "User registration is failed", null);
 		}
-
+		
 		return response;
 	}
-
-	/*
-	 * @Override public GetUserResponse getUser(int userid) { GetUserResponse
-	 * response = null; Optional<User> userObj = userRepository.findById(userid); if
-	 * (userObj.isPresent()) { response = new
-	 * GetUserResponse(HttpStatus.PRECONDITION_FAILED, "001",
-	 * "User is already registered with the given email address", null); return
-	 * response; } else { response = new
-	 * GetUserResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002",
-	 * "User registration is failed", null); }
-	 * 
-	 * return response; }
-	 */
-
+	
 	@Override
 	public GetUserResponse getUser(int userid) {
 		GetUserResponse response = null;
@@ -89,3 +77,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 }
+
+
+

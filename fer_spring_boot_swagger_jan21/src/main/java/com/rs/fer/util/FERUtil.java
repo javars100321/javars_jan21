@@ -6,10 +6,10 @@ import org.springframework.util.StringUtils;
 
 public class FERUtil {
 
-	public static Set<String> addErrorIfEmpty(Set<String> errorMessages, String value, String errorMessage) {
+	public static Set<String> addErrorIfEmpty(Set<String> errorMessages, String string, String errorMessage) {
 
-		if (StringUtils.isEmpty(value)) {
-			errorMessages.add(errorMessage);
+		if (StringUtils.isEmpty(string)) {
+				errorMessages.add(errorMessage);
 		}
 
 		return errorMessages;
@@ -27,10 +27,11 @@ public class FERUtil {
 	public static Set<String> addErrorIfEmpty(Set<String> errorMessages, float value, String errorMessage) {
 
 		if (StringUtils.isEmpty(value)) {
-			errorMessages.add(errorMessage);
+		errorMessages.add(errorMessage);
 		}
 
 		return errorMessages;
 	}
+	
 
 }

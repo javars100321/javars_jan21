@@ -10,9 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Expense {
-
 	@Id
-	@Column(name="expense_id")
+	@Column(name = "expense_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer expenseId;
 
@@ -33,20 +32,25 @@ public class Expense {
 
 	@Column
 	private String bywhom;
-	
+
 	@Column
 	private String created;
-	
+
 	@Column
 	private String updated;
-	
+
+	@Column
+	private int user_id;
+
 	public Expense() {
 
 	}
 
-	public Expense(int expenseid,String type, String date, float price, int numberOfItems, float total, String bywhom) {
-		
-		this.expenseId=expenseid;
+	public Expense(int expenseId, String type, String date, float price, int numberOfItems, float total,
+			String bywhom) {
+
+		this.expenseId = expenseId;
+
 		this.type = type;
 		this.date = date;
 		this.price = price;
@@ -56,12 +60,21 @@ public class Expense {
 
 	}
 
-	public int getExpenseId() {
+	public Integer getExpenseId() {
 		return expenseId;
 	}
 
-	public void setExpenseId(int expenseid) {
-		this.expenseId = expenseid;
+	public void setExpenseId(Integer expenseId) {
+		this.expenseId = expenseId;
+	}
+
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getType() {
@@ -127,6 +140,5 @@ public class Expense {
 	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-	
-	
+
 }
