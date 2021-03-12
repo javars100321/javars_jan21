@@ -7,6 +7,8 @@ import com.rs.fer.user.response.RegistrationResponse;
 import com.rs.fer.user.response.ResetPasswordResponse;
 
 public interface UserService {
+	
+	UpdateUserResponse updateuser(UpdateUserRequest request);
 
 	RegistrationResponse registration(RegistrationRequest request);
 

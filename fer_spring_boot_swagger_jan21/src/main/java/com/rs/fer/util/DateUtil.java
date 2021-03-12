@@ -9,5 +9,6 @@ public class DateUtil {
 		SimpleDateFormat  simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
 		return simpleDateFormat.format(new Date());
 	}
+
 	
 }
