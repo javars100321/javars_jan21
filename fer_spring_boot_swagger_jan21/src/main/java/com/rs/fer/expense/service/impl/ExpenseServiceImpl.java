@@ -63,7 +63,14 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	}
 
+	/**
+	 * To delete expense based on expenseid
+	 * 
+	 * @param request
+	 * @return response
+	 */
 	@Override
+
 	public DeleteExpenseResponse deleteExpense(DeleteExpenseRequest request) {
 
 		DeleteExpenseResponse response = null;
@@ -76,11 +83,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 			// delete bean to database
 			expenseRepository.deleteById(request.getExpenseid());
 
-			// success
+			// if expense is deleted success case
 			response = new DeleteExpenseResponse(HttpStatus.OK, "000", "Expense is succesfully Deleted", null);
 			response.setExpense(expenseObj.get());
 		} else {
-			// failure
+			// if expense is deleted failure case
 			response = new DeleteExpenseResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "Delete Expense is failed",
 					null);
 		}

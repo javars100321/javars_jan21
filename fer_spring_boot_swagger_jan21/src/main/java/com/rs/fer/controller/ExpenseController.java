@@ -75,6 +75,12 @@ public class ExpenseController {
 
 	}
 
+	/**
+	 * To delete expense based on expenseid
+	 * 
+	 * @param request
+	 * @return response
+	 */
 	@DeleteMapping("/deleteExpense")
 
 	public DeleteExpenseResponse deleteExpense(@RequestBody DeleteExpenseRequest request) {
@@ -111,8 +117,9 @@ public class ExpenseController {
 			response = expenseService.getExpense(request);
 		}
 		return response;
-	
+
 	}
+
 	@GetMapping("/getExpenses")
 	public GetExpensesResponse getExpenses(@ModelAttribute GetExpensesRequest request) {
 
@@ -126,10 +133,9 @@ public class ExpenseController {
 
 		} else {
 			response = expenseService.getExpenses(request);
-		}		
+		}
 		return response;
-		
-	}
 
+	}
 
 }
