@@ -88,6 +88,13 @@ public class ExpenseServiceImpl implements ExpenseService {
 		return response;
 	}
 
+	/**
+	 * Add Expense
+	 * 
+	 * @param request
+	 * @return response
+	 */
+	@Override
 	public AddExpenseResponse addExpense(AddExpenseRequest request) {
 
 		AddExpenseResponse response = null;

@@ -36,6 +36,13 @@ public class ExpenseController {
 	@Autowired
 	ExpenseService expenseService;
 
+	/**
+	 * Add Expense
+	 * 
+	 * @param request
+	 * @return response
+	 */
+
 	@PostMapping("/expense")
 	public AddExpenseResponse addExpense(@RequestBody AddExpenseRequest request) {
 
@@ -111,8 +118,9 @@ public class ExpenseController {
 			response = expenseService.getExpense(request);
 		}
 		return response;
-	
+
 	}
+
 	@GetMapping("/getExpenses")
 	public GetExpensesResponse getExpenses(@ModelAttribute GetExpensesRequest request) {
 
@@ -126,10 +134,9 @@ public class ExpenseController {
 
 		} else {
 			response = expenseService.getExpenses(request);
-		}		
+		}
 		return response;
-		
-	}
 
+	}
 
 }
