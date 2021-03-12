@@ -2,9 +2,7 @@ package com.rs.fer.user.util.impl;
 
 import org.springframework.stereotype.Component;
 
-import com.rs.fer.bean.Expense;
 import com.rs.fer.bean.User;
-import com.rs.fer.expense.request.AddExpenseRequest;
 import com.rs.fer.user.request.RegistrationRequest;
 import com.rs.fer.user.request.ResetPasswordRequest;
 import com.rs.fer.user.util.UserUtil;

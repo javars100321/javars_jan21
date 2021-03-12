@@ -140,11 +140,18 @@ public class ExpenseController {
 
 	}
 
+/**
+	 * To get the expenses based on userId
+	 * @param userId
+	 * @return response
+	 */
 	@GetMapping("/getExpenses")
+//To load the form elements into bean by using getExpenses method
 	public GetExpensesResponse getExpenses(@ModelAttribute GetExpensesRequest request) {
 
 		GetExpensesResponse response = null;
 
+	//To load validation check to the request
 		Set<String> errorMessages = expenseValidation.validateGetExpensesRequest(request);
 
 		if (!CollectionUtils.isEmpty(errorMessages)) {
@@ -152,6 +159,7 @@ public class ExpenseController {
 			response = new GetExpensesResponse(HttpStatus.PRECONDITION_FAILED, "999", null, errorMessages);
 
 		} else {
+//return expenses
 			response = expenseService.getExpenses(request);
 		}
 		return response;

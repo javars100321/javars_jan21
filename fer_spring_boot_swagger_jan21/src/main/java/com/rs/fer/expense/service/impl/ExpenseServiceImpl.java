@@ -161,16 +161,26 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	}
 
+	/**
+	 * To get the expenses based on userId
+	 * @param userId
+	 * @return expense
+	 */
 	@Override
 	public GetExpensesResponse getExpenses(GetExpensesRequest request) {
 		GetExpensesResponse response = null;
 
+		//To load the userObject based on userId
 		Optional<User> userObj = userRepository.findById(request.getUserId());
 
 		if (userObj.isPresent()) {
+			//If expenses with that particular userId is present return expenses
+			//load response
+			//success
 			response = new GetExpensesResponse(HttpStatus.OK, "000", "GetExpenses Success", null);
 			response.setExpenses(userObj.get().getExpenses());
 		} else {
+			//If expenses with that particular userId is not present return response with error messages
 			// failure
 			response = new GetExpensesResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "No expenses", null);
 		}
