@@ -30,9 +30,14 @@ public class UserValidationImpl implements UserValidation {
 
 	@Override
 	public Set<String> validateResetPasswordRequest(ResetPasswordRequest request) {
-
-		// errormessages
-		return null;
+		Set<String> errorMessages = new LinkedHashSet<String>();
+		
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getUserId(), "Please enter UserId");
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getCurrentPassword(), "Please enter CurrentPassword");
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getNewPassword(), "Please enter NewPassword");
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getConfirmNewPassword(), "Please enter ConfirmNewPassword");
+		
+		return errorMessages;
 	}
 
 	@Override

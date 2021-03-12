@@ -72,7 +72,13 @@ public class UserController {
 		return response;
 	}
 
+	/**
+	 * To reset password based on userId
+	 * @param userId
+	 * @return response
+	 */
 	@PostMapping("/resetPassword")
+	
 	public ResetPasswordResponse resetPassword(@RequestBody ResetPasswordRequest request) {
 
 		ResetPasswordResponse response = null;

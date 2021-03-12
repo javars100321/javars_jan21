@@ -63,6 +63,11 @@ public class UserServiceImpl implements UserService {
 		// return null;
 	}
 
+	/**
+	 * To get the password based on userId
+	 * @param userId
+	 * @return response
+	 */
 	@Override
 	public ResetPasswordResponse resetPassword(ResetPasswordRequest request) {
 		ResetPasswordResponse response = null;

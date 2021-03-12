@@ -11,7 +11,6 @@ public interface UserValidation {
 
 	Set<String> validateResetPasswordRequest(ResetPasswordRequest request);
 
-//uservalidation
 
 	Set<String> validateGetUserRequest(int userId);
 }
