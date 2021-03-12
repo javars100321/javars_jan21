@@ -11,9 +11,11 @@ import com.rs.fer.bean.User;
 import com.rs.fer.expense.request.AddExpenseRequest;
 import com.rs.fer.expense.request.DeleteExpenseRequest;
 import com.rs.fer.expense.request.EditExpenseRequest;
+import com.rs.fer.expense.request.GetExpenseRequest;
 import com.rs.fer.expense.response.AddExpenseResponse;
 import com.rs.fer.expense.response.DeleteExpenseResponse;
 import com.rs.fer.expense.response.EditExpenseResponse;
+import com.rs.fer.expense.response.GetExpenseResponse;
 import com.rs.fer.expense.service.ExpenseService;
 import com.rs.fer.expense.util.ExpenseUtil;
 import com.rs.fer.repository.ExpenseRepository;
@@ -27,7 +29,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	@Autowired
 	ExpenseRepository expenseRepository;
-	
+
 	@Autowired
 	UserRepository userRepository;
 
@@ -86,6 +88,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 		return response;
 	}
+
 	public AddExpenseResponse addExpense(AddExpenseRequest request) {
 
 		AddExpenseResponse response = null;
@@ -107,6 +110,29 @@ public class ExpenseServiceImpl implements ExpenseService {
 			// failure
 			response = new AddExpenseResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "User is not present", null);
 		}
+		return response;
+
+	}
+
+	@Override
+	public GetExpenseResponse getExpense(GetExpenseRequest request) {
+
+		GetExpenseResponse response = null;
+
+		Optional<Expense> expenses = expenseRepository.findById(request.getExpenseId());
+
+		if (expenses.isPresent()) {
+
+			response = new GetExpenseResponse(HttpStatus.OK, "000", "fetch expense", null);
+
+			response.setExpenses(expenses.get());
+
+		} else {
+			// failure
+			response = new GetExpenseResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "No expense found", null);
+
+		}
+
 		return response;
 
 	}
