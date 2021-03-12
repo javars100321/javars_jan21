@@ -36,6 +36,13 @@ public class ExpenseController {
 	@Autowired
 	ExpenseService expenseService;
 
+	/**
+	 * Add Expense
+	 * 
+	 * @param request
+	 * @return response
+	 */
+
 	@PostMapping("/expense")
 	public AddExpenseResponse addExpense(@RequestBody AddExpenseRequest request) {
 
