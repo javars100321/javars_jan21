@@ -9,7 +9,7 @@ import com.rs.fer.response.AbstractResponse;
 
 public class GetExpenseResponse extends AbstractResponse {
 
-	private Expense expenses;
+	private Expense expense;
 
 	public GetExpenseResponse(HttpStatus status, String statusCode, String message, Set<String> errorMessages) {
 		super(status, statusCode, message, errorMessages);
@@ -19,14 +19,12 @@ public class GetExpenseResponse extends AbstractResponse {
 		this.errorMessages = errorMessages;
 	}
 
-	public Expense getExpenses() {
-		return expenses;
+	public Expense getExpense() {
+		return expense;
 	}
 
-	public void setExpenses(Expense expenses) {
-		this.expenses = expenses;
+	public void setExpense(Expense expense) {
+		this.expense = expense;
 	}
-
-	
 
 }

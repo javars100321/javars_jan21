@@ -41,9 +41,8 @@ public class ExpenseController {
 
 		Set<String> errorMessages = expenseValidation.validateAddExpenseRequest(request);
 
-		if (!CollectionUtils.isEmpty(errorMessages))
-		{
-			
+		if (!CollectionUtils.isEmpty(errorMessages)) {
+
 			// return response with error
 			response = new AddExpenseResponse(HttpStatus.PRECONDITION_FAILED, "999", null, errorMessages);
 
@@ -54,8 +53,8 @@ public class ExpenseController {
 		return response;
 
 	}
-	
-		@PostMapping("/editexpense")
+
+	@PostMapping("/editexpense")
 	public EditExpenseResponse editExpense(@RequestBody EditExpenseRequest request) {
 
 		EditExpenseResponse response = null;
@@ -94,7 +93,7 @@ public class ExpenseController {
 		return response;
 
 	}
-	
+
 	@GetMapping("/getExpense")
 	public GetExpenseResponse getExpenseById(@ModelAttribute GetExpenseRequest request) {
 
@@ -113,5 +112,4 @@ public class ExpenseController {
 
 	}
 
-	
 }

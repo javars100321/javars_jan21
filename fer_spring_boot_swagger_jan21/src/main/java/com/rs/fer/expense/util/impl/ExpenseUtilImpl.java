@@ -16,7 +16,7 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 	public Expense loadAddExpenseRequestToExpense(AddExpenseRequest request) {
 
 		Expense expense = new Expense();
-		//expense.setExpenseId(request.getExpenseId());
+		// expense.setExpenseId(request.getExpenseId());
 		expense.setType(request.getType());
 		expense.setDate(request.getDate());
 		expense.setPrice(request.getPrice());
@@ -27,7 +27,7 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 
 		return expense;
 	}
-	
+
 	@Override
 	public Expense loadEditExpenseRequestToExpense(EditExpenseRequest request) {
 
@@ -45,6 +45,7 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 
 		return expense;
 	}
+
 	@Override
 	public Expense loadDeleteExpenseRequestToExpense(DeleteExpenseRequest request) {
 
@@ -55,4 +56,3 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 	}
 
 }
-

@@ -7,14 +7,11 @@ import com.rs.fer.user.response.RegistrationResponse;
 import com.rs.fer.user.response.ResetPasswordResponse;
 
 public interface UserService {
-	
+
 	RegistrationResponse registration(RegistrationRequest request);
 
-	//ResetPasswordResponse resetPassword(ResetPasswordRequest requestd);
-
 	ResetPasswordResponse resetPassword(ResetPasswordRequest requestd);
-	
 
 	GetUserResponse getUser(int userid);
-	
+
 }

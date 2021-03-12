@@ -35,20 +35,11 @@ public class UserValidationImpl implements UserValidation {
 		return null;
 	}
 
-	public static Set<String> addError(Set<String> errorMessages, int value, String errorMessage) {
-
-		if (value <= 0) {
-			errorMessages.add(errorMessage);
-		}
-
-		return errorMessages;
-	}
-
 	@Override
 	public Set<String> validateGetUserRequest(int userId) {
 		Set<String> errorMessages = new HashSet<String>();
 
-		addError(errorMessages, userId, "Please enter valid userId");
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, userId, "Please enter valid userId");
 
 		return errorMessages;
 	}

@@ -45,7 +45,10 @@ public class ExpenseValidationImpl implements ExpenseValidation {
 
 		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getType(), "Please enter Type");
 		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getDate(), "Please enter Date");
-
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getPrice(), "Please enter price");
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getNumberOfItems(),
+				"Please enter numberOfItems");
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getTotal(), "Please enter total");
 		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getBywhom(), "Please enter Mobile");
 
 		return errorMessages;

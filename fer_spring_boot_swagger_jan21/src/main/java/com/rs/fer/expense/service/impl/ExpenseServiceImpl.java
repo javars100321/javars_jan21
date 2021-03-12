@@ -38,9 +38,9 @@ public class ExpenseServiceImpl implements ExpenseService {
 		EditExpenseResponse response = null;
 
 		// User is present or not check
-		Optional<Expense> expenses = expenseRepository.findById(request.getExpenseId());
+		Optional<Expense> expenseObj = expenseRepository.findById(request.getExpenseId());
 
-		if (expenses.isPresent()) {
+		if (expenseObj.isPresent()) {
 
 			// load vo to bean
 			Expense expense = expenseUtil.loadEditExpenseRequestToExpense(request);
@@ -67,19 +67,16 @@ public class ExpenseServiceImpl implements ExpenseService {
 		DeleteExpenseResponse response = null;
 
 		// Expense is present or not check
-		Optional<Expense> expenses = expenseRepository.findById(request.getExpenseid());
+		Optional<Expense> expenseObj = expenseRepository.findById(request.getExpenseid());
 
-		if (expenses.isPresent()) {
-
-			// load vo to bean
-			Expense expense = expenseUtil.loadDeleteExpenseRequestToExpense(request);
+		if (expenseObj.isPresent()) {
 
 			// delete bean to database
-			expenseRepository.delete(expense);
+			expenseRepository.deleteById(request.getExpenseid());
 
 			// success
 			response = new DeleteExpenseResponse(HttpStatus.OK, "000", "Expense is succesfully Deleted", null);
-			response.setExpense(expense);
+			response.setExpense(expenseObj.get());
 		} else {
 			// failure
 			response = new DeleteExpenseResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "Delete Expense is failed",
@@ -97,14 +94,14 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 		if (userObj.isPresent()) {
 			// load vo to bean
-			Expense expense1 = expenseUtil.loadAddExpenseRequestToExpense(request);
+			Expense expense = expenseUtil.loadAddExpenseRequestToExpense(request);
 			User user = userObj.get();
-			user.getExpenses().add(expense1);
+			user.getExpenses().add(expense);
 			// save bean to database
 			user = userRepository.save(user);
 
 			response = new AddExpenseResponse(HttpStatus.OK, "000", "Expense Added is succesfully ", null);
-			response.setExpense(expense1);
+			response.setExpense(expense);
 
 		} else {
 			// failure
@@ -119,13 +116,13 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 		GetExpenseResponse response = null;
 
-		Optional<Expense> expenses = expenseRepository.findById(request.getExpenseId());
+		Optional<Expense> expenseObj = expenseRepository.findById(request.getExpenseId());
 
-		if (expenses.isPresent()) {
+		if (expenseObj.isPresent()) {
 
 			response = new GetExpenseResponse(HttpStatus.OK, "000", "fetch expense", null);
 
-			response.setExpenses(expenses.get());
+			response.setExpense(expenseObj.get());
 
 		} else {
 			// failure

@@ -13,12 +13,10 @@ public class ResetPasswordRequest {
 		return userId;
 	}
 
-	
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	
 	public String getCurrentPassword() {
 		return currentPassword;
 	}
@@ -27,7 +25,6 @@ public class ResetPasswordRequest {
 		this.currentPassword = currentPassword;
 	}
 
-	
 	public String getNewPassword() {
 		return newPassword;
 	}

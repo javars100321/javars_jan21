@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return response;
-		//return null;
+		// return null;
 	}
 
 	@Override
@@ -70,26 +70,26 @@ public class UserServiceImpl implements UserService {
 		if (userObj.isPresent()) {
 			User user = userObj.get();
 			if (user.getPassword().equals(request.getCurrentPassword())) {
-				
+
 				// success
 				user.setPassword(request.getNewPassword());
 				userRepository.save(user);
 				response = new ResetPasswordResponse(HttpStatus.OK, "000", "password changed successfully", null);
 			} else {
-				
+
 				// failure
-				
+
 				response = new ResetPasswordResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002",
 						"Current Password and password which is on the account are not matching", null);
 
 			}
 
 		} else {
-			response = new ResetPasswordResponse(HttpStatus.PRECONDITION_FAILED, "001", "User is not foiund", null);
+			response = new ResetPasswordResponse(HttpStatus.PRECONDITION_FAILED, "002", "User is not foiund", null);
 		}
 		return response;
 	}
-	
+
 	@Override
 	public GetUserResponse getUser(int userid) {
 		GetUserResponse response = null;
@@ -107,6 +107,3 @@ public class UserServiceImpl implements UserService {
 	}
 
 }
-
-
-
