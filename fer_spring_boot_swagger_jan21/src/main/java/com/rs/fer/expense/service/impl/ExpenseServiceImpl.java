@@ -62,20 +62,22 @@ public class ExpenseServiceImpl implements ExpenseService {
 		return response;
 
 	}
-
+	
 	/**
 	 * To delete expense based on expenseid
 	 * 
 	 * @param request
 	 * @return response
 	 */
+
+	
 	@Override
 
 	public DeleteExpenseResponse deleteExpense(DeleteExpenseRequest request) {
 
 		DeleteExpenseResponse response = null;
 
-		// Expense is present or not check
+		
 		Optional<Expense> expenseObj = expenseRepository.findById(request.getExpenseid());
 
 		if (expenseObj.isPresent()) {
