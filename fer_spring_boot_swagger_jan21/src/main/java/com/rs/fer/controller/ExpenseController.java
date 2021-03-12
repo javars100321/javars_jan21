@@ -62,6 +62,15 @@ public class ExpenseController {
 		return response;
 
 	}
+	
+	
+		/**
+	 * 
+	 * Edit Expense by expenseId
+	 * @param request
+	 * @return  response
+	 */
+
 
 	@PostMapping("/editexpense")
 	public EditExpenseResponse editExpense(@RequestBody EditExpenseRequest request) {

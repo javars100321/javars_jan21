@@ -34,6 +34,15 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	
+	
+		/**
+	 * 
+	 * Edit Expense by expenseId
+	 * @param request
+	 * @return  response
+	 */
 
 	@Override
 	public EditExpenseResponse editExpense(EditExpenseRequest request) {
