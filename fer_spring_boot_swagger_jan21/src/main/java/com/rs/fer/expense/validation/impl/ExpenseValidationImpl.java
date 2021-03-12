@@ -19,7 +19,8 @@ public class ExpenseValidationImpl implements ExpenseValidation {
 	@Override
 	public Set<String> validateEditExpenseRequest(EditExpenseRequest request) {
 		Set<String> errorMessages = new LinkedHashSet<String>();
-
+		
+		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getExpenseId(), "Please enter expenseId");
 		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getType(), "Please enter type");
 		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getDate(), "Please enter date");
 		errorMessages = FERUtil.addErrorIfEmpty(errorMessages, request.getPrice(), "Please enter price");

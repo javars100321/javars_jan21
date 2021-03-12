@@ -32,7 +32,8 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 	public Expense loadEditExpenseRequestToExpense(EditExpenseRequest request) {
 
 		Expense expense = new Expense();
-
+		
+		expense.setExpenseId(request.getExpenseId());
 		expense.setExpenseId(request.getExpenseId());
 		expense.setType(request.getType());
 		expense.setDate(request.getDate());
@@ -41,7 +42,8 @@ public class ExpenseUtilImpl implements ExpenseUtil {
 		expense.setTotal(request.getTotal());
 		expense.setBywhom(request.getBywhom());
 
-		expense.setCreated(DateUtil.getCurrentDate());
+	expense.setUpdated(DateUtil.getCurrentDate());
+
 
 		return expense;
 	}

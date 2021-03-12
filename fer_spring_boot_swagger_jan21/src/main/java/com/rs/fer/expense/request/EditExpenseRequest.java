@@ -8,7 +8,7 @@ package com.rs.fer.expense.request;
  *
  */
 public class EditExpenseRequest {
-
+	
 	private int expenseId;
 
 	private String type;
@@ -22,7 +22,10 @@ public class EditExpenseRequest {
 	private float total;
 
 	private String bywhom;
+	
+	
 
+	
 	public int getExpenseId() {
 		return expenseId;
 	}
@@ -47,6 +50,7 @@ public class EditExpenseRequest {
 		this.date = date;
 	}
 
+	
 	public float getPrice() {
 		return price;
 	}
@@ -79,4 +83,6 @@ public class EditExpenseRequest {
 		this.bywhom = bywhom;
 	}
 
+		
+	
 }
