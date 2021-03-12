@@ -17,10 +17,12 @@ import com.rs.fer.expense.request.AddExpenseRequest;
 import com.rs.fer.expense.request.DeleteExpenseRequest;
 import com.rs.fer.expense.request.EditExpenseRequest;
 import com.rs.fer.expense.request.GetExpenseRequest;
+import com.rs.fer.expense.request.GetExpensesRequest;
 import com.rs.fer.expense.response.AddExpenseResponse;
 import com.rs.fer.expense.response.DeleteExpenseResponse;
 import com.rs.fer.expense.response.EditExpenseResponse;
 import com.rs.fer.expense.response.GetExpenseResponse;
+import com.rs.fer.expense.response.GetExpensesResponse;
 import com.rs.fer.expense.service.ExpenseService;
 import com.rs.fer.expense.validation.ExpenseValidation;
 
@@ -109,7 +111,25 @@ public class ExpenseController {
 			response = expenseService.getExpense(request);
 		}
 		return response;
-
+	
 	}
+	@GetMapping("/getExpenses")
+	public GetExpensesResponse getExpenses(@ModelAttribute GetExpensesRequest request) {
+
+		GetExpensesResponse response = null;
+
+		Set<String> errorMessages = expenseValidation.validateGetExpensesRequest(request);
+
+		if (!CollectionUtils.isEmpty(errorMessages)) {
+			// return response with error messages
+			response = new GetExpensesResponse(HttpStatus.PRECONDITION_FAILED, "999", null, errorMessages);
+
+		} else {
+			response = expenseService.getExpenses(request);
+		}		
+		return response;
+		
+	}
+
 
 }
