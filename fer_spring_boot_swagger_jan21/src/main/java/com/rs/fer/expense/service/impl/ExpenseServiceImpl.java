@@ -80,7 +80,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 		if (expenseObj.isPresent()) {
 
-			// delete bean to database
+			// Delete expense based  based on expenseid
 			expenseRepository.deleteById(request.getExpenseid());
 
 			// if expense is deleted success case
