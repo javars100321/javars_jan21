@@ -5,13 +5,17 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rs.fer.user.request.RegistrationRequest;
 import com.rs.fer.user.request.ResetPasswordRequest;
+import com.rs.fer.user.response.GetUserResponse;
+//github.com/javars100321/javars_jan21.git
 import com.rs.fer.user.response.RegistrationResponse;
 import com.rs.fer.user.response.ResetPasswordResponse;
 import com.rs.fer.user.service.UserService;
@@ -46,6 +50,18 @@ public class UserController {
 		return response;
 		
 	}
+	
+	@GetMapping("/user/{id}")
+	public GetUserResponse getUser(@RequestParam("id") Integer id) {
+		GetUserResponse response = null;
+		Set<String> errorMessages = userValidation.validateGetUserRequest(id);
+		if (!CollectionUtils.isEmpty(errorMessages)) {
+			response = new GetUserResponse(HttpStatus.PRECONDITION_FAILED, "999", null, errorMessages);
+		} else {
+			response = userService.getUser(id);
+		}
+		return response;
+	}
 
 	@PostMapping("/resetPassword")
 	public ResetPasswordResponse resetPassword(@RequestBody ResetPasswordRequest request) {
@@ -69,3 +85,4 @@ public class UserController {
 	}
 
 }
+

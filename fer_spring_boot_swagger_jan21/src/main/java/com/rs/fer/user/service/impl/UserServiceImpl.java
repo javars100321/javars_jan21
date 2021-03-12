@@ -12,6 +12,8 @@ import com.rs.fer.bean.User;
 import com.rs.fer.repository.UserRepository;
 import com.rs.fer.user.request.RegistrationRequest;
 import com.rs.fer.user.request.ResetPasswordRequest;
+import com.rs.fer.user.response.GetUserResponse;
+//github.com/javars100321/javars_jan21.git
 import com.rs.fer.user.response.RegistrationResponse;
 import com.rs.fer.user.response.ResetPasswordResponse;
 import com.rs.fer.user.service.UserService;
@@ -87,5 +89,24 @@ public class UserServiceImpl implements UserService {
 		}
 		return response;
 	}
+	
+	@Override
+	public GetUserResponse getUser(int userid) {
+		GetUserResponse response = null;
+		Optional<User> userObj = userRepository.findById(userid);
+		if (userObj.isPresent()) {
+			response = new GetUserResponse(HttpStatus.OK, "000", "get User is succesfully ", null);
+			response.setUser(userObj.get());
+
+		} else {
+			response = new GetUserResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "get user is failed", null);
+
+		}
+
+		return response;
+	}
 
 }
+
+
+

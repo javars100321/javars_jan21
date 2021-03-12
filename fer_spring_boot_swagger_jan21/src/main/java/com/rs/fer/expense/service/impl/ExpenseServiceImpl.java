@@ -7,13 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.rs.fer.bean.Expense;
+import com.rs.fer.bean.User;
+import com.rs.fer.expense.request.AddExpenseRequest;
 import com.rs.fer.expense.request.DeleteExpenseRequest;
 import com.rs.fer.expense.request.EditExpenseRequest;
+import com.rs.fer.expense.response.AddExpenseResponse;
 import com.rs.fer.expense.response.DeleteExpenseResponse;
 import com.rs.fer.expense.response.EditExpenseResponse;
 import com.rs.fer.expense.service.ExpenseService;
 import com.rs.fer.expense.util.ExpenseUtil;
 import com.rs.fer.repository.ExpenseRepository;
+import com.rs.fer.repository.UserRepository;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -23,6 +27,9 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	@Autowired
 	ExpenseRepository expenseRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	public EditExpenseResponse editExpense(EditExpenseRequest request) {
@@ -78,5 +85,29 @@ public class ExpenseServiceImpl implements ExpenseService {
 		}
 
 		return response;
+	}
+	public AddExpenseResponse addExpense(AddExpenseRequest request) {
+
+		AddExpenseResponse response = null;
+
+		Optional<User> userObj = userRepository.findById(request.getUserId());
+
+		if (userObj.isPresent()) {
+			// load vo to bean
+			Expense expense1 = expenseUtil.loadAddExpenseRequestToExpense(request);
+			User user = userObj.get();
+			user.getExpenses().add(expense1);
+			// save bean to database
+			user = userRepository.save(user);
+
+			response = new AddExpenseResponse(HttpStatus.OK, "000", "Expense Added is succesfully ", null);
+			response.setExpense(expense1);
+
+		} else {
+			// failure
+			response = new AddExpenseResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "User is not present", null);
+		}
+		return response;
+
 	}
 }

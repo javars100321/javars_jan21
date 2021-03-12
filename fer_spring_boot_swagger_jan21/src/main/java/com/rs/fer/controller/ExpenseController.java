@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rs.fer.expense.request.AddExpenseRequest;
 import com.rs.fer.expense.request.DeleteExpenseRequest;
 import com.rs.fer.expense.request.EditExpenseRequest;
+import com.rs.fer.expense.response.AddExpenseResponse;
 import com.rs.fer.expense.response.DeleteExpenseResponse;
 import com.rs.fer.expense.response.EditExpenseResponse;
 import com.rs.fer.expense.service.ExpenseService;
@@ -28,7 +30,28 @@ public class ExpenseController {
 	@Autowired
 	ExpenseService expenseService;
 
-	@PostMapping("/editexpense")
+	@PostMapping("/expense")
+	public AddExpenseResponse addExpense(@RequestBody AddExpenseRequest request) {
+
+		AddExpenseResponse response = null;
+
+		Set<String> errorMessages = expenseValidation.validateAddExpenseRequest(request);
+
+		if (!CollectionUtils.isEmpty(errorMessages))
+		{
+			
+			// return response with error
+			response = new AddExpenseResponse(HttpStatus.PRECONDITION_FAILED, "999", null, errorMessages);
+
+		} else {
+			response = expenseService.addExpense(request);
+		}
+
+		return response;
+
+	}
+	
+		@PostMapping("/editexpense")
 	public EditExpenseResponse editExpense(@RequestBody EditExpenseRequest request) {
 
 		EditExpenseResponse response = null;
@@ -68,4 +91,5 @@ public class ExpenseController {
 
 	}
 
+	
 }
