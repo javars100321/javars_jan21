@@ -90,15 +90,25 @@ public class UserServiceImpl implements UserService {
 		return response;
 	}
 
+	/**
+	 * To get the user based on userid
+	 * @param userid
+	 * @return response
+	 */
 	@Override
 	public GetUserResponse getUser(int userid) {
 		GetUserResponse response = null;
+		
+		//To get the user based on userId
 		Optional<User> userObj = userRepository.findById(userid);
+		
 		if (userObj.isPresent()) {
+			//If user is present
 			response = new GetUserResponse(HttpStatus.OK, "000", "get User is succesfully ", null);
 			response.setUser(userObj.get());
 
 		} else {
+			//If user not present
 			response = new GetUserResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "get user is failed", null);
 
 		}

@@ -20,6 +20,11 @@ import com.rs.fer.user.response.ResetPasswordResponse;
 import com.rs.fer.user.service.UserService;
 import com.rs.fer.user.validation.UserValidation;
 
+/**
+ * This class is mainly used for operations on user like registration, login, resetPassword, getUser and updateUser.
+ * @author Personal
+ *
+ */
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -47,7 +52,14 @@ public class UserController {
 		return response;
 
 	}
-
+    
+	
+	
+	/**
+	 * To get the user based on Id
+	 * @param id
+	 * @return response
+	 */
 	@GetMapping("/user/{id}")
 	public GetUserResponse getUser(@PathVariable("id") Integer id) {
 		GetUserResponse response = null;
