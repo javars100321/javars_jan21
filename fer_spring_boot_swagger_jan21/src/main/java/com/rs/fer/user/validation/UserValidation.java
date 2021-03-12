@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.rs.fer.user.request.RegistrationRequest;
 import com.rs.fer.user.request.ResetPasswordRequest;
+import com.rs.fer.user.request.UpdateUserRequest;
 
 public interface UserValidation {
 
@@ -13,4 +14,6 @@ public interface UserValidation {
 
 
 	Set<String> validateGetUserRequest(int userId);
+	
+	Set<String> validateUpdateUserRequest(UpdateUserRequest request);
 }

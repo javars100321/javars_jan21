@@ -12,10 +12,12 @@ import com.rs.fer.bean.User;
 import com.rs.fer.repository.UserRepository;
 import com.rs.fer.user.request.RegistrationRequest;
 import com.rs.fer.user.request.ResetPasswordRequest;
+import com.rs.fer.user.request.UpdateUserRequest;
 import com.rs.fer.user.response.GetUserResponse;
 //github.com/javars100321/javars_jan21.git
 import com.rs.fer.user.response.RegistrationResponse;
 import com.rs.fer.user.response.ResetPasswordResponse;
+import com.rs.fer.user.response.UpdateUserResponse;
 import com.rs.fer.user.service.UserService;
 import com.rs.fer.user.util.UserUtil;
 
@@ -120,5 +122,51 @@ public class UserServiceImpl implements UserService {
 
 		return response;
 	}
+	
+	/**
+	 * UpdateUser 
+	 * @param request
+	 * @return
+	 */
+	@Override
+	
+	public UpdateUserResponse updateuser(UpdateUserRequest request) {
+		UpdateUserResponse response = null;
+		
+		// User is present or not check
+				List<User> users = userRepository.findByEmail(request.getEmail());
+
+				if (!CollectionUtils.isEmpty(users)) {
+					// User already present
+					response = new UpdateUserResponse(HttpStatus.PRECONDITION_FAILED, "001",
+							"User is already registered with the given email address", null);
+					return response;
+				}
+
+
+		Optional<User> userObj = userRepository.findById(request.getUserId());
+
+		if (userObj.isPresent()) {
+
+			// load vo to bean
+
+			User user = userUtil.loadUpdateUserRequestToUser(request);
+
+			// save bean to database
+			user = userRepository.save(user);
+
+			// User already present
+			response = new UpdateUserResponse(HttpStatus.OK , "000", "User is updated successfully",null);
+		 response.setUser(user);
+		} else {
+			// failure
+			response = new UpdateUserResponse(HttpStatus.INTERNAL_SERVER_ERROR, "002", "User update failed",
+					null);
+		}
+
+		return response;
+	}
+	
+	
 
 }
